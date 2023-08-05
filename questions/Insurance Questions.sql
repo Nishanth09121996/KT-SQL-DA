@@ -1,4 +1,4 @@
---1.Country wise find the number of Policies ?
+--1.Based on Policy Holder Country  find the number of Policies ?
 
     select
     p2.country as PolicyHolderCountry
