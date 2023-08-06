@@ -8,12 +8,20 @@
     group by v.name
     order by matches_played desc
 
---2.Find teams and count of matches won by then ?
+--2.Find count of matches won by each team for each season?
 
     select t.name as team_name,count(im.id) as matches_won from ipl_matches im 
     join teams t  on im.winner_id = t.id 
     group by team_name
     order by matches_won desc
+
+    select t.name as team_name,s.name  as season_name,count(im.id) as matches_won from ipl_matches im 
+    join teams t  on im.winner_id = t.id 
+    join seasons s on im.season_id = s.id 
+    group by team_name,season_name
+    order by 2,1 
+
+
 
 --3.Season wise find the number of mom award won by player sort by season ascending and number of mom won descending
 
