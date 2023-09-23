@@ -1,0 +1,46 @@
+SQL (Structured Query Language) provides a variety of built-in functions to manipulate and work with data in relational databases. These functions can be broadly categorized into several groups based on their functionality. Here are some frequently used SQL functions:
+
+1. Aggregate Functions:
+   - COUNT(): Counts the number of rows in a result set.
+   - SUM(): Calculates the sum of numeric values in a column.
+   - AVG(): Computes the average of numeric values in a column.
+   - MIN(): Retrieves the minimum value from a column.
+   - MAX(): Retrieves the maximum value from a column.
+
+2. String Functions:
+   - CONCAT(): Concatenates two or more strings together.
+   - SUBSTRING(): Extracts a portion of a string based on a specified starting position and length.
+   - UPPER(): Converts a string to uppercase.
+   - LOWER(): Converts a string to lowercase.
+   - LENGTH(): Returns the length (number of characters) of a string.
+   - TRIM(): Removes leading and trailing spaces from a string.
+
+3. Date and Time Functions:
+   - CURRENT_DATE(): Returns the current date.
+   - CURRENT_TIME(): Returns the current time.
+   - CURRENT_TIMESTAMP(): Returns the current timestamp (date and time).
+   - DATEPART(): Extracts a specific part (year, month, day, etc.) from a date or timestamp.
+   - DATEDIFF(): Calculates the difference between two dates or timestamps.
+
+4. Mathematical Functions:
+   - ROUND(): Rounds a numeric value to a specified number of decimal places.
+   - CEIL() or CEILING(): Rounds a numeric value up to the nearest integer.
+   - FLOOR(): Rounds a numeric value down to the nearest integer.
+   - ABS(): Returns the absolute value of a numeric expression.
+
+5. Logical Functions:
+   - CASE WHEN: Provides conditional logic to SQL queries.
+   - COALESCE(): Returns the first non-null value in a list of expressions.
+
+6. Conversion Functions:
+   - CAST(): Converts one data type to another.
+   - CONVERT(): Converts a value from one data type to another in a specific format.
+
+7. Grouping Functions:
+   - GROUP_CONCAT(): Concatenates values from multiple rows into a single string within a group.
+   - GROUP_BY(): Groups rows based on one or more columns for aggregate calculations.
+
+8. Window Functions:
+   - ROW_NUMBER(): Assigns a unique number to each row within a result set.
+   - RANK(): Assigns a unique rank to each row within a result set based on a specified column's values.
+   - DENSE_RANK(): Assigns a unique rank to each row within a result set, with no gaps in ranking.

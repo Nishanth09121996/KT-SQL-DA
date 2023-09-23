@@ -1,0 +1,66 @@
+Create a Table with following Conditions.
+
+No of Tables 3
+
+Tables: Customer, orders, Products
+
+Schema: sales
+
+Customer Table:
+Columns & COnstrains
+1.CustomerID (int, Primary Key): This column serves as the primary key for uniquely identifying each customer in the table. It's an integer type, and it's marked as the primary key, which ensures its uniqueness.
+
+2.Email (varchar(30), Unique, Not Null): This column is for storing customer email addresses. It's defined as a varchar with a maximum length of 30 characters. The "Unique" constraint ensures that each email address is unique across all rows in the table, and "Not Null" ensures that it's a required field.
+
+3.Address (Text): This column is for storing customer addresses. It's defined as a text data type, which can hold longer and more flexible text values.
+
+4.Phone (char, Not Null): This column is for storing customer phone numbers. It's defined as a char data type and is not null. You mentioned that it should accept only 10 characters, so you may want to specify the maximum length explicitly, like this: Phone char(10) Not Null.
+
+5.Age (smallint, Not Null): This column is for storing the age of the customer. It's defined as a smallint (which typically stores small whole numbers) and is marked as not null.
+
+6.DOB (date): This column is for storing the date of birth of the customer. It's defined as a date data type.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Products:
+
+1.ProductID (int,Primary Key): A unique identifier for each product in the table. It's often an auto-incremented integer value that ensures each product has a distinct identifier.
+
+2.ProductName(varchar,not null): A column to store the name or title of the product. This column helps users and applications easily identify and search for products.
+
+3.Price(decimal(10,2),should be greater than 0): A column to store the price of the product. This is important for pricing and financial calculations. Depending on your business needs, you may also want to consider additional columns for currency or pricing history.
+
+4.Description(Text): A column to store a brief or detailed description of the product. This helps provide information to customers about what the product is and its key features.
+
+5.CategoryorProductType(varchar, not null): A column to categorize or classify products into different groups or types. This helps with organizing products and allows users to filter or search for products by category.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Orders:
+OrderID (int, Primary Key,auto increment): A unique identifier for each order. This should be an auto-incremented integer to ensure uniqueness.
+
+CustomerID (int, Foreign Key): A foreign key referencing the "Customer" table's CustomerID column. This establishes a relationship between orders and customers, allowing you to associate each order with a specific customer.
+
+ProductID (int, Foreign Key): A foreign key referencing the "Product" table's ProductID column. This establishes a relationship between orders and Products, allowing you to associate each order with a specific Product.
+
+OrderDate (timestamp): A timestamp indicating when the order was placed. This column stores both date and time information. -- default current_timestamp
+
+Status (varchar(20)): A column to track the status of the order, such as "Processing," "Shipped," "Delivered," etc. Define a suitable maximum length for the status field.
+
+ShippingAddress (text): A column to store the shipping address for the order. Using a text data type allows for flexibility in capturing longer addresses.
+
+PaymentMethod (varchar(30)): The payment method used for the order, such as "Credit Card," "PayPal," etc. Specify an appropriate maximum length for this field.
+
+PaymentStatus (varchar(20)): A column to track the payment status, such as "Paid," "Pending," etc. Define a suitable maximum length.
+
+ShippingMethod (varchar(30)): The shipping method chosen for the order, e.g., "Standard Shipping," "Express Shipping," etc. Specify a maximum length.
+
+TrackingNumber (varchar(50)): If applicable, a field to store the tracking number for the shipment. Define a maximum length based on the expected format of tracking numbers.
+
+Notes (text): Additional notes or comments related to the order. Again, use a text data type for flexibility in capturing longer notes.
+
+This structure allows you to store essential information about each customer's orders, including order details, payment and shipping information, and order status. The use of foreign keys (CustomerID) establishes a relationship between the "Order" table and the "Customer" table, allowing you to associate orders with specific customers.
+
+Remember to adapt the column types and constraints based on the specific requirements of your application and the database management system you are using. Additionally, you may want to consider adding indexes on columns like OrderID or CustomerID to optimize query performance, depending on your query patterns.
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+
+1. What is an SQL function, and how is it different from a stored procedure?
+
+2. Explain the difference between scalar functions and table-valued functions in SQL. Provide examples of each.
+
+3. How do you use the `COUNT()` function to find the number of rows in a table?
+
+4. Can you explain the purpose of the `GROUP BY` clause in SQL, and provide an example query using it?
+
+5. What is the difference between the `HAVING` clause and the `WHERE` clause in SQL?
+
+6. How do you use the `SUM()` function to calculate the total of a column in a table? Provide an example.
+
+7. Explain the purpose of the `CONCAT()` function in SQL and provide an example of its usage.
+
+8. How can you find the highest and lowest values in a column using SQL functions?
+
+9. What is an aggregate function in SQL? Provide examples of aggregate functions and their usage.
+
+10. How do you use the `DATEPART()` function to extract specific parts of a date in SQL?
+
+11. Explain the purpose of the `COALESCE()` function in SQL and provide an example of when it might be used.
+
+12. What is the `CASE` statement in SQL, and how can it be used with functions to create conditional logic in queries?
+
+13. Can you describe the purpose of window functions in SQL, and provide an example of how to use the `ROW_NUMBER()` function?
+
+14. How do you use the `DATEDIFF()` function to calculate the difference between two dates in SQL?
+
+15. Explain the purpose of the `CAST()` and `CONVERT()` functions in SQL, and provide an example of their usage.
+
+16. What is a user-defined function (UDF) in SQL, and how can you create and use one in your database?
+
+17. How can you use the `STRING_SPLIT()` function in SQL Server to split a string into multiple values?
+
+18. What is a recursive SQL function, and when might you use it?
+
+19. Explain the purpose of the `LEAD()` and `LAG()` window functions in SQL and provide examples of their usage.
+
+20. How do you use the `AVG()` function to calculate the average of a column, excluding NULL values?
