@@ -29,3 +29,23 @@ INSERT INTO ind_customer (Name) VALUES
     ('Rajesh Singh'),
     ('Sneha Kapoor'),
     ('Vikram Gupta');
+-- Union 
+select name from us_customer
+union 
+select name from ind_customer;
+-- Union All
+select name from us_customer
+union all
+select name from ind_customer;
+
+-- Intersection 
+select name from us_customer
+intersect
+select name from ind_customer;
+
+-- Except 
+
+select name from us_customer
+except
+select name from ind_customer;
+
