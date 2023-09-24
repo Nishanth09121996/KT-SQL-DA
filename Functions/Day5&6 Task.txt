@@ -1,0 +1,160 @@
+1. Find top 5 customers based on the sales amount.
+Table: functions_sample.sales_data
+Step 1. Find the Total sales by customername
+step 2. Find the rank based on total sales amount 
+Functions => SUM,DENSE_Rank
+
++---------------+-------------------+-----+
+| customername  | salesAmount       | rnk |
++---------------+-------------------+-----+
+| Roger Harui   |  882276.496599999 |   1 |
+| Reuben D'sa   |  860147.510999999 |   2 |
+| Andrew Dixon  | 853850.6394999992 |   3 |
+| Robert Vessa  | 817127.8028999994 |   4 |
+| Ryan Calafato | 803769.8508999991 |   5 |
++---------------+-------------------+-----+
+
+2. Find ToP 5 least spent Customer by sales amount 
+Table: functions_sample.sales_data
+Step 1. Find the Total sales by customername
+step 2. Find the rank based on total sales amount 
+Functions => SUM,DENSE_Rank
+
++------------------+-------------+-----+
+| customername     | salesAmount | rnk |
++------------------+-------------+-----+
+| Tony Ting        |       1.374 |   1 |
+| Aldeen Gallagher |      24.294 |   2 |
+| Willis Johnson   |     57.6808 |   3 |
+| Esther Valle     |      58.069 |   4 |
+| Linda Mitchell   |      59.334 |   5 |
++------------------+-------------+-----+
+
+3. Find quantity of the products ordered.
+Table: functions_sample.sales_data
+columns: ProductName,OrderQty
+
++----------------------------+------------------------+
+| ProductName                | total_quantity_ordered |
++----------------------------+------------------------+
+| Long-Sleeve Logo Jersey, L |                   6140 |
+| AWC Logo Cap               |                   6121 |
+| Sport-100 Helmet, Blue     |                   4618 |
+| Sport-100 Helmet, Black    |                   4447 |
+| Classic Vest, S            |                   4079 |
++----------------------------+------------------------+
+
+4. Which Product is ordered in least quantity?
+
+Table: functions_sample.sales_data
+columns: ProductName,OrderQty
+
++-----------------------------+------------------------+
+| ProductName                 | total_quantity_ordered |
++-----------------------------+------------------------+
+| LL Touring Frame - Blue, 58 |                      4 |
++-----------------------------+------------------------+
+
+
+5. Find the number of orders by customers.
+Table: functions_sample.sales_data
+columns: CustomerName,SalesOrderID
++---------------+---------------------+
+| CustomerName  | count(SalesOrderID) |
++---------------+---------------------+
+| Reuben D'sa   |                 530 |
+| Richard Lum   |                 482 |
+| Ryan Calafato |                 451 |
+| Yale Li       |                 446 |
+| Marcia Sultan |                 441 |
++---------------+---------------------+
+
+
+6.List top 10 customers by total no of  orders made.
+Table: functions_sample.sales_data
+columns: CustomerName,SalesOrderID
+Functions:Count,Dense rank
+
++--------------------+-------------+-----+
+| CustomerName       | order_count | rnk |
++--------------------+-------------+-----+
+| Reuben D'sa        |         530 |   1 |
+| Richard Lum        |         482 |   2 |
+| Ryan Calafato      |         451 |   3 |
+| Yale Li            |         446 |   4 |
+| Marcia Sultan      |         441 |   5 |
+| Holly Dickson      |         440 |   6 |
+| Della Demott Jr    |         436 |   7 |
+| Robert Vessa       |         436 |   7 |
+| Sandra Maynard     |         432 |   8 |
+| Joseph Castellucio |         429 |   9 |
++--------------------+-------------+-----+
+
+
+7.Find the customers who made less than 50 orders.
+Table: functions_sample.sales_data
+columns: CustomerName,SalesOrderID
+Functions:Count,having
+
++----------------+-------------+
+| CustomerName   | order_count |
++----------------+-------------+
+| David Lawrence |           1 |
+| Lynn Gonzales  |           1 |
+| Willis Johnson |           1 |
+| H. Valentine   |           1 |
+| James Bailey   |           1 |
++----------------+-------------+
+
+
+8.Find Month wise total sales sort the data by sales amount desc
+Table: functions_sample.sales_data
+columns: orderdate,salesAmount
+Functions:concat,SUM,DATE_FORMAT
+tip:extract year and month from date or DATE_FORMAT
+
++--------------------------------+--------------------+
+| date_format(OrderDate,'%Y/%m') | SalesAmount        |
++--------------------------------+--------------------+
+| 2011/05                        |  489328.5786999999 |
+| 2011/07                        |  1540073.394799997 |
+| 2011/08                        | 2011166.3529999952 |
+| 2011/10                        |  4029193.392899973 |
+| 2011/12                        |  713230.2279000016 |
++--------------------------------+--------------------+
+
+9.COmpare month over month sales and provide weather there is increase in sales or decrease in sales.
+Tips: If current_sales > previous sales then 'Increase' else 'decrease' 
+Table: functions_sample.sales_data
+columns: orderdate,salesAmount
+Functions:lag,SUM,case
+
+
++-----------+--------------------+--------------------+------------+
+| YearMonth | CurrentSalesAmount | PreviousMonthSAles | SaleStatus |
++-----------+--------------------+--------------------+------------+
+| 2011/05   |  489328.5786999999 |               NULL | Decrease   |
+| 2011/07   |  1540073.394799997 |  489328.5786999999 | Increase   |
+| 2011/08   | 2011166.3529999952 |  1540073.394799997 | Increase   |
+| 2011/10   |  4029193.392899973 | 2011166.3529999952 | Increase   |
+| 2011/12   |  713230.2279000016 |  4029193.392899973 | Decrease   |
+| 2012/01   | 3356078.4962999695 |  713230.2279000016 | Increase   |
+| 2012/02   |  883011.3913000019 | 3356078.4962999695 | Decrease   |
+| 2012/03   |  2269721.740299991 |  883011.3913000019 | Increase   |
+| 2012/04   | 1137250.3662000047 |  2269721.740299991 | Decrease   |
+| 2012/05   | 2411568.5809999933 | 1137250.3662000047 | Increase   |
++-----------+--------------------+--------------------+------------+
+
+10.Catagory wise find the Costliest Product.
+Table: functions_sample.sales_data
+columns: CategoryName,ProductName,UnitPrice
+Functions: Use MAX or rank or rownumber along with Partition
+
++--------------+---------------------------+-----------+----------------+
+| CategoryName | ProductName               | UnitPrice | r_num_by_price |
++--------------+---------------------------+-----------+----------------+
+| Accessories  | Hitch Rack - 4-Bike       |        72 |              1 |
+| Bikes        | Road-150 Red, 52          |  2146.962 |              1 |
+| Clothing     | Men's Bib-Shorts, S       |   58.4935 |              1 |
+| Components   | HL Road Frame - Black, 44 |     858.9 |              1 |
++--------------+---------------------------+-----------+----------------+
