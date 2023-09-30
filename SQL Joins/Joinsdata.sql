@@ -39,4 +39,45 @@ INSERT INTO states (state_id, state_name, country_id) VALUES
     (8, 'Quebec', 3),
     (9, 'London', 4),
     (10, 'Sydney', 5);
+    
+-- -----------------    
+-- Cross Join Data
+
+CREATE TABLE t1
+(
+    c1 INT NOT NULL
+);
+
+INSERT INTO t1(c1) 
+VALUES(1),(2),(3);
+
+CREATE TABLE t2
+(
+    c2 CHAR(1) NOT NULL
+);
+
+INSERT INTO t2(c2) 
+VALUES('A'),('B'),('C');
+
+
+-- ---------------------------------------------------------------------------------
+-- Self Join Data
+-- Create the "employees" table
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(255) NOT NULL,
+    manager_id INT,
+    CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
+);
+
+-- Insert records into the "employees" table
+INSERT INTO employees (employee_id, employee_name, manager_id) VALUES
+    (1, 'John Doe', NULL), -- John Doe is a manager (no manager)
+    (2, 'Jane Smith', 1),   -- Jane Smith reports to John Doe
+    (3, 'Bob Johnson', 1),  -- Bob Johnson reports to John Doe
+    (4, 'Alice Brown', 2),  -- Alice Brown reports to Jane Smith
+    (5, 'Charlie Wilson', 2); -- Charlie Wilson reports to Jane Smith
+
+
+    
 
