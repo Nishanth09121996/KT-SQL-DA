@@ -6,35 +6,64 @@
 -- ON Condition A.COLNAME = B.COLNAME
 -- Inner Join
 
-SELECT
-    Table_left.Id AS Left_table_id,
-    Table_right.Id AS right_table_id
+
+select * from joins_sample.table_left;
+
+commit;
+
+SELECT count( distinct l.id)
+    -- L.Id AS Left_table_id,
+--     R.Id AS right_table_id
 FROM joins_sample.table_left L
 JOIN joins_sample.table_right R ON L.Id = R.Id;
 
--- Left Join
+
+-- SELECT 
+--   l.*
+--   ,r.*
+-- FROM joins_sample.table_left L
+-- JOIN joins_sample.table_right R ON L.Id = R.Id;
+-- 0	212	20:43:59	SELECT 
+--      Id AS Left_table_id,
+--      Id AS right_table_id
+--  FROM joins_sample.table_left L
+--  JOIN joins_sample.table_right R ON L.Id = R.Id
+--  LIMIT 0, 20	Error Code: 1052. Column 'Id' in field list is ambiguous	0.000 sec
+
+ truncate table joins_sample.table_right;
+ insert into joins_sample.table_right values(3);
+ 
+ truncate table joins_sample.table_left;
+ insert into joins_sample.table_left values(1);
+ commit;
+ 
+ select * from joins_sample.table_right;
+ 
+ 
+ commit;
+-- Left Join  Macthed records ffrom left & right And Records in left Table 
 
 SELECT
-    Table_left.Id AS Left_table_id,
-    Table_right.Id AS right_table_id
+    L.Id AS Left_table_id,
+    R.Id AS right_table_id
 FROM joins_sample.table_left L
 LEFT JOIN joins_sample.table_right R ON L.Id = R.Id;
 
 -- Right Join
 
 SELECT
-    Table_left.Id AS Left_table_id,
-    Table_right.Id AS right_table_id
+    L.Id AS Left_table_id,
+    R.Id AS right_table_id
 FROM joins_sample.table_left L
 RIGHT JOIN joins_sample.table_right R ON L.Id = R.Id;
 
 -- Full Join
 
 SELECT
-    Table_left.Id AS Left_table_id,
-    Table_right.Id AS right_table_id
-FROM Table_left
-CROSS JOIN Table_right;
+    L.Id AS Left_table_id,
+    R.Id AS right_table_id
+FROM joins_sample.table_left L
+CROSS JOIN joins_sample.Table_right R;
 
 -- Cross Join Type 2 
 
