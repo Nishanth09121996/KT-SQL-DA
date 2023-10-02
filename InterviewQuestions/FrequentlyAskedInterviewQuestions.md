@@ -11,6 +11,37 @@ from
 order by
 	productcategory;
 
+with sales_cte as (
+select
+	productcategory
+,
+	productname
+,
+	sales
+,
+	sum(sales) over(partition by productcategory) as CategoryLevelRevenue
+,
+	Round(sales / sum(sales) over(partition by productcategory)* 100, 2)
+from
+	interviewquestion.productsales p )
+,
+totalrevenue_cte as 
+(
+select
+	sum(sales) as total_sales
+from
+	sales_cte 
+)
+select distinct 
+	productcategory ,
+	CategoryLevelRevenue,
+	total_sales,
+	round((CategoryLevelRevenue / total_sales) * 100, 0)
+from
+	sales_cte,
+	totalrevenue_cte;
+
+
 +-----------------+--------------+---------+--------------+------------------------+
 | productcategory | productname  | sales   | TotalRevenue | ContributionPercentage |
 +-----------------+--------------+---------+--------------+------------------------+
@@ -100,5 +131,76 @@ from
 	order by student_name 
 	)
 	select *  from student_cte where duplicateIdentifier >1
+
+```
+
+#### Manager Employee Problem
+
+```sql 
+
+SELECT 
+    e.employee_id,
+    e.employee_name,
+    e.manager_id,
+    m.employee_name AS managerName
+FROM
+    interviewquestion.employee e
+        LEFT JOIN
+    interviewquestion.employee m ON e.manager_id = m.employee_id;
+
+```
+### Department Wise Highesh Salary
+
+```sql 
+with sal as (
+select e.employee_name ,d.department_name ,e.salary 
+,dense_rank () over(partition by d.department_name order by e.salary desc) as rnk
+from interviewquestion.employee e 
+join interviewquestion.department d 
+on e.deptId  = d.deptId 
+order by 2 asc,3 desc
+) select * from sal where rnk =2
+
+
+```
+
+#### Join 
+
+```sql 
+
+-- Inner Join 
+
+select * from interviewquestion.tableone t1
+inner join interviewquestion.tabletwo t2
+on t1.ID  = t2.id;
+
+-- Left 
+
+select * from interviewquestion.tableone t1
+Left join interviewquestion.tabletwo t2
+on t1.ID  = t2.id;
+
+-- Right 
+
+select * from interviewquestion.tableone t1
+Right join interviewquestion.tabletwo t2
+on t1.ID  = t2.id;
+
+
+```
+
+#### Remove Duplicates
+
+```sql
+
+with cte as (
+select
+studentID
+,student_name
+,age
+,row_number () over(partition by student_name order by studentID desc) as r_num
+from interviewquestion.student s 
+order by student_name )
+select * from cte where r_num = 1
 
 ```
