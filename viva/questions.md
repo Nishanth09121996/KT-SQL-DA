@@ -128,7 +128,7 @@ Sample Output:
 Hint: Find the Policy who doesn't have any claim created
 ```
 
-**Add a column(Use Stored Procedure) in Policy Table as Policy Status, it should have only three vlaues "Active", "Expired" and "Quote".**
+**11.Add a column(Use Stored Procedure) in Policy Table as Policy Status, it should have only three vlaues "Active", "Expired" and "Quote".**
 
 ```text
 Condition: 
@@ -136,3 +136,12 @@ Condition:
 2.If the Policy Start Date is Less than the Current Date and Policy Enddate is greater than Current date then "Active". 
 3.If the Policy Start Date is greater than the Current Date then "Quote".
 ```
+
+**Find Total number of policies by a agent for every year, the result should be in below format.**
+
+| Agent Name   | 2022 | 2023 | 2024 |
+|--------------|------|------|------|
+| John Doe     | 10   | 12   | 15   |
+| Jane Smith   | 8    | 9    | 10   |
+| Bob Johnson  | 15   | 14   | 12   |
+| Mary Williams| 5    | 7    | 8    |
