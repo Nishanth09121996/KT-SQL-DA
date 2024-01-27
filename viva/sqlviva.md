@@ -71,9 +71,9 @@ The "Coverage" table contains information about different types of insurance cov
 | 2         | 1        | 2          | 2024-03-01 | $150              | $150            | 2024-03-01   | Paid      |
 | 3         | 2        | 3          | 2024-02-15 | $120              | $120            | 2024-02-15   | Paid      |
 | 4         | 3        | 4          | 2024-03-10 | $200              | $200            | 2024-03-10   | Paid      |
-| 5         | 4        | 5          | 2024-04-01 | $80               | $80             | 2024-04-01   | Unpaid    |
-| 6         | 2        | 2          | 2024-04-01 | $180              | $180            | 2024-04-01   | Unpaid    |
-| 7         | 3        | 3          | 2024-04-15 | $150              | $150            | 2024-04-15   | Unpaid    |
+| 5         | 4        | 5          | 2024-04-01 | $80               | $0             | 2024-04-01   | Unpaid    |
+| 6         | 2        | 2          | 2024-04-01 | $180              | $0            | 2024-04-01   | Unpaid    |
+| 7         | 3        | 3          | 2024-04-15 | $150              | $0            | 2024-04-15   | Unpaid    |
 
 **Description:**
 The "Premium" table contains information about premium payments for insurance policies. Each row represents a premium payment.
