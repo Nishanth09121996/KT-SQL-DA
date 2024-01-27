@@ -6,6 +6,9 @@
 
 ## Party Table
 
+**Description:**
+The "Party" table contains information about party ie Policy Holder or Agent ,generaly the party table will hold person related data. Each column is described as follows:
+
 - **PartID (PK):** Primary Key, an integer that uniquely identifies each party (individual or entity) in the table.
 - **Name:** The name of the party.
 - **Age:** The age of the party, representing their age in years.
