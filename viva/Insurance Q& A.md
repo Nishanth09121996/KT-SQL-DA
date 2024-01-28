@@ -602,3 +602,82 @@ Output:
 | 2        | 1    | 2    | 2    | 1    |
 | 3        | 1    | 2    | 2    | 1    |
 | 4        | 1    | 2    | 2    | 1    |
+
+---
+
+**13.Join the Below data from diffrent table into a single , the target table should have only 2 columns name and email without any duplicates.**
+
+Set 1: UK Regional Data
+| Policy Holder ID | Name       | Country | Email                      |
+|------------------|------------|---------|----------------------------|
+| 1                | John Smith | UK      | john.smith@example.co.uk   |
+| 2                | Emma Brown  | UK      | emma.brown@example.co.uk   |
+| 3                | James White | UK      | james.white@example.co.uk  |
+| 4                | Sarah Green | UK      | sarah.green@example.co.uk  |
+| 5                | David Black | UK      | david.black@example.co.uk  |
+Set 2: US Regional Data
+| Policy Holder ID | Name          | Country | Email                        |
+|------------------|---------------|---------|------------------------------|
+| 6                | John Smith    | US      | john.smith@example.com       |
+| 7                | Emily Johnson | US      | emily.johnson@example.com    |
+| 8                | Michael Davis | US      | michael.davis@example.com    |
+| 9                | Sarah Green   | US      | sarah.green@example.com      |
+| 10               | Daniel Brown  | US      | daniel.brown@example.com     |
+Set 3: India Regional Data
+| Policy Holder ID | Name           | Country | Email                         |
+|------------------|----------------|---------|-------------------------------|
+| 11               | Priya Patel    | IND     | priya.patel@example.co.in     |
+| 12               | Rahul Kapoor   | IND     | rahul.kapoor@example.co.in    |
+| 13               | Natasha Sharma | IND     | natasha.sharma@example.co.in  |
+| 14               | John Smith     | IND     | john.smith@example.co.in      |
+| 15               | Anil Gupta     | IND     | anil.gupta@example.co.in      |
+
+Notes:
+    The Name "John Smith" and the associated email are present in both the UK and India sets.
+    The Name "Sarah Green" and the associated email are present in both the UK and US sets.
+
+Sample Output:
+
+| Name           | Email                         |
+|----------------|-------------------------------|
+| John Smith     | john.smith@example.co.uk      |
+| Emma Brown     | emma.brown@example.co.uk      |
+| James White    | james.white@example.co.uk     |
+| Sarah Green    | sarah.green@example.co.uk     |
+| David Black    | david.black@example.co.uk     |
+| Emily Johnson  | emily.johnson@example.com     |
+| Michael Davis  | michael.davis@example.com     |
+| Daniel Brown   | daniel.brown@example.com      |
+| Priya Patel    | priya.patel@example.co.in      |
+| Rahul Kapoor   | rahul.kapoor@example.co.in     |
+| Natasha Sharma | natasha.sharma@example.co.in  |
+| Anil Gupta     | anil.gupta@example.co.in      |
+
+**Find the employee and his manager.**
+
+Input Table Schema:
+| Column      | Data Type    | Description                            |
+|-------------|--------------|----------------------------------------|
+| EmployeeID  | INT          | Primary key for the employee            |
+| EmployeeName| VARCHAR(50)  | Name of the employee                    |
+| ManagerID   | INT          | Foreign key referencing EmployeeID     |
+|-------------|--------------|----------------------------------------|
+
+Input Table data:
+| EmployeeID | EmployeeName | ManagerID |
+|------------|--------------|-----------|
+| 1          | John Doe     | NULL      |
+| 2          | Alice Smith  | 1         |
+| 3          | Bob Johnson  | 1         |
+| 4          | Charlie Brown| 2         |
+| 5          | David Miller | 3         |
+
+Output Table Data:
+
+| Employee        | Manager       |
+|-----------------|---------------|
+| John Doe        | NULL          |
+| Alice Smith     | John Doe      |
+| Bob Johnson     | John Doe      |
+| Charlie Brown   | Alice Smith   |
+| David Miller    | Bob Johnson   |
