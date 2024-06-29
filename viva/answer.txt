@@ -1,0 +1,88 @@
+-- 1.
+-- select * from insurance.policy p 
+-- where p.PolicyEndDate < current_date() 
+
+
+-- 2
+-- select agentid,p2.Name as agent_name,count(policyid) from policy p 
+-- inner join insurance.party p2 
+-- on p2.PartID = p.AgentID 
+-- group by p.AgentID ,p2.Name 
+-- having count(policyid)>=2
+
+-- 3
+-- select p.Country ,Count( distinct p2.PolicyHolderID) from insurance.party p 
+-- join insurance.policy p2 
+-- on p.PartID = p2.PolicyHolderID
+-- where age>=18
+-- group by p.Country 
+
+
+-- 4
+-- with agent_cte as (
+-- select p.Name as AgentName,sum(Amount) as premium from insurance.agentpayment_q7 aq 
+-- join insurance.party p 
+-- on aq.AgentID = p.PartID 
+-- group by p.Name 
+-- ), agent_rank as (
+-- select * , dense_rank() over(order by premium desc ) as rnk from agent_cte)
+-- select * from agent_rank
+-- where rnk <=2
+
+select * from insurance.agentpayment_q7 aq 
+
+
+
+select * from insurance.party p 
+where p.Name = 'John Doe'
+
+-- 5
+-- with cover_cte as (
+-- select CoverageID ,count(distinct PolicyID) as policy_count from insurance.premium_q6 pq 
+-- group by 1)
+-- ,rnk_cte as (
+-- select * ,dense_rank() over( order by policy_count ASC)  as rnk from cover_cte)
+-- select * from rnk_cte where rnk = 1
+
+
+
+
+--6
+-- with due_cte as (
+-- select *
+-- ,min(DueDate) over(partition by policyholdername) as last_due_date 
+-- ,InstallmentAmount - ReceivedAmount as Pending_premium from insurance.premium_q6 pq 
+-- where DueDate < current_date() 
+-- and InstallmentAmount > ReceivedAmount
+-- )
+-- select policyholdername,last_due_date,sum(Pending_premium) as total_pending_premium  from due_cte
+-- group by 1,2
+
+
+--7
+-- with agent_cte as (
+-- select AgentID 
+-- ,year(aq.ReceivedDate) as ReceivedYear
+-- ,sum(Amount) as amount_by_year  from agentpayment_q7 aq 
+-- group by AgentID ,year(aq.ReceivedDate)
+-- )
+-- select a.agentid
+-- ,a.ReceivedYear as cuurent_year
+-- ,a.amount_by_year as cuurent_year_amt
+-- ,b.ReceivedYear as previous_year
+-- ,b.amount_by_year as previous_year_amt
+-- ,(a.amount_by_year - b.amount_by_year)/b.amount_by_year * 100 as percentage_diiference
+-- ,b.ReceivedYear + 1 as previous_year_1
+-- from agent_cte a
+-- left join agent_cte b 
+-- on a.agentid = b.agentid
+-- and a.ReceivedYear = b.ReceivedYear+1
+-- order by 1,2
+
+
+--8
+-- select aq.AgentID
+-- ,aq.ReceivedDate 
+-- ,aq.Amount,sum(Amount) over(partition by aq.AgentID,year(ReceivedDate) order by aq.ReceivedDate  asc)
+-- from agentpayment_q7 aq 
+-- order by 1,2
