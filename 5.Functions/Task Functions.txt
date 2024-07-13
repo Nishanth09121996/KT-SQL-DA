@@ -1,0 +1,15 @@
+Insurance Dataset:
+
+1. Find Country wise number of policies(policyid is primary key).
+2. Year wise find the number of policy (Extract year from policy Start Date).
+3.Find the Number of IncidentId for Each PolicyID and CoverageiD (use table insurance.claims).
+4.Display Lossincured for Each coverage (use table insurance.claims) .
+5.FInd Number of Policy By country and region use insurance.policy.
+
+sales Dataset:
+1.Find the sales for each year formula (ListPrice*OrderQty) use sales.product_orders view.
+2.Find the Salesamount((ListPrice*OrderQty)) for CategoryName Bikes where bike cost is more than $500.
+3.Find the Category, subcaregorywise salesAmount((ListPrice*OrderQty)).
+4.subcaregorywise find the Most ordered Products.
+5.Find the Salesamount for subcaregory name starting with 'H' and ending with 'S' for year 2013
+6.Find Numbers product under each Category and subcaregory where the ListPrice is greater than $250. 

@@ -1,0 +1,86 @@
+CREATE TABLE Party (
+    PartyID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    Phone VARCHAR(20),
+    DOB DATE,
+    Sex CHAR(1),
+    City VARCHAR(100)
+);
+---------------------
+CREATE TABLE Policy (
+    PolicyId INT PRIMARY KEY,
+    PolicyNumber VARCHAR(50),
+    PolicyTerm INT,
+    PolicyStartDate DATE,
+    PolicyEndDate DATE,
+    PolicyType VARCHAR(50),
+    PolicyHolderID INT,
+    PolicyCity VARCHAR(100),
+    FOREIGN KEY (PolicyHolderID) REFERENCES Party(PartyID)
+);
+------------------------------
+CREATE TABLE CoverageType (
+    CoverageTypeID INT PRIMARY KEY,
+    CoverageTypeName VARCHAR(100)
+);
+-------------------------------
+CREATE TABLE Coverage (
+    CoverageId INT PRIMARY KEY,
+    CoverageTypeID INT,
+    CoverageLimitInDollars DECIMAL(15, 2),
+    CoverageStartDate DATE,
+    CoverageEndDate DATE,
+    FOREIGN KEY (CoverageTypeID) REFERENCES CoverageType(CoverageTypeID)
+);
+-------------------------------------
+CREATE TABLE writtenPremium (
+    PolicyID INT,
+    CoverageID INT,
+    InstallmentDate DATE,
+    InstallmentAmount DECIMAL(15, 2),
+    FOREIGN KEY (PolicyID) REFERENCES Policy(PolicyId),
+    FOREIGN KEY (CoverageID) REFERENCES Coverage(CoverageId)
+);
+---------------------------------------
+CREATE TABLE EarnedPremium (
+    PolicyID INT,
+    CoverageID INT,
+    InstallmentDate DATE,
+    ReceivedAmount DECIMAL(15, 2),
+    FOREIGN KEY (PolicyID) REFERENCES Policy(PolicyId),
+    FOREIGN KEY (CoverageID) REFERENCES Coverage(CoverageId)
+);
+------------------------------------------------------
+CREATE TABLE EarnedPremium (
+    PolicyID INT,
+    CoverageID INT,
+    InstallmentDate DATE,
+    ReceivedAmount DECIMAL(15, 2),
+    FOREIGN KEY (PolicyID) REFERENCES Policy(PolicyId),
+    FOREIGN KEY (CoverageID) REFERENCES Coverage(CoverageId)
+);
+---------------------------------------------------------
+CREATE TABLE city (
+    CityID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    State VARCHAR(50),
+    Region VARCHAR(50),
+    Country VARCHAR(50),
+    Zip VARCHAR(20)
+);
+
+----------------------------------------------------------------
+CREATE TABLE claims (
+    claimid INT PRIMARY KEY,
+    PolicyID INT,
+    CoverageID INT,
+    IncidentNumber VARCHAR(50),
+    Incidentdesc VARCHAR(255),
+    ClaimAmountRaiseInDollars DECIMAL(15, 2),
+    ClaimAmountPaidInDollars DECIMAL(15, 2),
+    ClaimCityID INT,
+    FOREIGN KEY (PolicyID) REFERENCES Policy(PolicyId),
+    FOREIGN KEY (CoverageID) REFERENCES Coverage(CoverageId)
+);

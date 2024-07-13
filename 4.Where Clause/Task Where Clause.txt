@@ -1,0 +1,8 @@
+1. Find the customer names starting with Letter 'J', it should accept both upper and lower case.
+2.Find the Products whose ListPrice is greater than 500 and should be less than 600.
+3.Display the Products where are ordered in year 2011.
+4.Display the Products which contains 'Bike'
+5.Display the orders which are created between '2011-09-12' and '2012-09-19'
+6.Find the Policy belongs to region 'Moscow' (Use Insurance Dataset Table: insurance.policy).
+7.Find the Active policy in insurance.policy table, criteria PolicyEndDate should be less than current date.
+8.Find the policies belongs to country Yemen and Niger
